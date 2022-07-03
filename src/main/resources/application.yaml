@@ -1,0 +1,17 @@
+spring:
+  rabbitmq:
+    host: 47.100.85.66
+    port: 5672
+    username: admin
+    password: wgx
+    #NONE:禁用发布确认模式，是默认值
+    #CORRELATED:发布消息成功到交换机后会触发回调方法
+    #SIMPLE:有两种效果，一种效果和CORRELATED一样会触发回调方法
+    #       另一种在发布消息成功之后使用rabbitTemplate调用waitForConfirms或者
+    #       waitForConfirmsOrDie方法等到broker节点返回结果，根据结果来判定下一步的逻辑，要注意的是
+    #       waitForConfirmsOrDie方法返回false则会关闭channel，则接下来无法发送消息到broker
+    publisher-confirm-type: correlated
+    publisher-returns: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
